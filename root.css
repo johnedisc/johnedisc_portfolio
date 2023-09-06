@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;1,200;1,300&display=swap');
+
+:root {
+  --primary-font-color: #dfdcd9;
+  --opposite-font-color: rgb(227,213,206);
+  --primary-font: 'arial', sans-serif;
+  --link-font-color: rgb(106,59,231);
+  --bg-1: rgb(32,35,38);
+  --light-blue: rgb(248,168,43);
+  --lavendar: rgb(115,131,218);
+  --bg-4: rgb(54,248,43);
+  --color1: rgb(252,195,221);
+  --color2: rgb(92,173,186);
+  --color3: rgb(248,247,44);
+  --color4: rgb(54,248,43);
+  --menu-color: rgb(155,174,206);
+  --gutter: 1.7rem;
+  --form-gutter: .8rem;
+  --scale: 1.5;
+  --base-font-size: 16px;
+  --h5: calc(var(--base-font-size) * var(--scale));
+  --h4: calc(var(--h5) * var(--scale));
+  --h3: calc(var(--h4) * var(--scale));
+  --h2: calc(var(--h3) * var(--scale));
+  --h1: calc(var(--h2) * var(--scale));
+  --p: calc(var(--base-font-size));
+  --small: calc(var(--p) / var(--scale));
+  --x-small: calc(var(--small) / var(--scale));
+  --base-line-height: 1; 
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin: 1rem;
+    /*
+    margin: 3rem 0 1.38rem;
+    font-weight: 400;
+    line-height: 1.3;
+     */
+  }
+
+  h1, .h1 {
+    margin: 0;
+    font-size: var(--h1);
+  }
+
+  h2, .h2 {font-size: var(--h2)}
+
+  h3, .h3 {
+    font-size: var(--h3);
+  }
+
+  h4, .h4 {font-size: var(--h4)}
+
+  h5, .h5 {font-size: var(--h5)}
+
+  p, .p {
+    /*
+    margin-bottom: 1rem;
+     */
+    font-size: var(--p);
+  }
+
+  small, .text_small {font-size: var(--small)}
+
+  .x-small {font-size: var(--x-small)}
+
+  ul {
+    /*
+    gap: var(--gutter);
+    */
+  }
+
+  li {
+    list-style-type: none;
+    font-size: var(--h5);
+  }
+
+  a, a:visited, :-webkit-any(link) {
+    text-decoration: none;
+    color: var(--primary-font-color);
+  }
+
+  form {
+    gap: var(--form-gutter);
+  }
+
+  button {
+    font-family: var(--primary-font);
+    font-size: var(--small);
+  }
+
+  * { box-sizing: border-box; }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /*
+    background-color: var(--bg-start-screen);
+    */
+    color: var(--primary-font-color);
+    font-family: var(--primary-font);
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    background-color: var(--bg-1);
+  }
+
+  #container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .flex-down {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .message-box {
+    background-color: black;
+    position: absolute;
+    width: 60%;
+    max-width: 25rem;
+    height: 20rem;
+    text-align: center;
+  }
+
+  .modal {
+    /* fixed is less sure than absolute with old devices */
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    opacity: .4;
+  }

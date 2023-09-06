@@ -1,0 +1,48 @@
+@import url('./root.css');
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ul {
+  width: auto;
+  margin: 0 0 0 20%;
+}
+
+li.spacer {
+  padding: .5rem;
+}
+
+a.name:hover {
+  color: var(--color1);
+}
+
+a.job:hover {
+  color: var(--color2);
+}
+
+p.links:hover {
+  color: var(--primary-font-color);
+}
+
+.name {
+}
+
+section.popup {
+  align-items: center;
+  width: 300px;
+  height: 80%;
+  position: absolute;
+  left: 55vw;
+}
+
+.modal {
+  background-color: var(--menu-color);
+  opacity: .8;
+}
+
+.links {
+  color: var(--bg-1);
+}
