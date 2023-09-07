@@ -6,7 +6,7 @@ import EventEmitter from 'events';
 import { IncomingMessage, ServerResponse } from 'http';
 
 const serverHit = new EventEmitter();
-const PORT: number | string = process.env.PORT || 3500;
+const PORT: number | string = process.env.PORT || 3300;
 let serverHits: number = 0;
 //const certs = {
 //  key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
