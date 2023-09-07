@@ -31,7 +31,7 @@ const popup = (selection) => {
   const section = document.createElement('section');
   const div = document.createElement('div');
   div.classList.add('modal', className);
-  section.classList.add('popup', 'flex-down');
+  section.classList.add('popup');
   if (selection === 'name') {
   section.innerHTML = `
     <a href='https://github.com/johnedisc'><p class='links'>github</p></a>

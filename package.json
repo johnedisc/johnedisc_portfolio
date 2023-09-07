@@ -9,7 +9,7 @@
   "scripts": {
     "startDev": "nodemon ./dist/server.js",
     "start": "node ./dist/server.js",
-    "build": "tsc"
+    "build": "tsc --watch"
   },
   "devDependencies": {
     "@types/node": "^20.5.6",

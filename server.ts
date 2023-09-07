@@ -6,7 +6,7 @@ import EventEmitter from 'events';
 import { IncomingMessage, ServerResponse } from 'http';
 
 const serverHit = new EventEmitter();
-const PORT: number | string = process.env.PORT || 3300;
+const PORT: number | string = process.env.PORT || 3500;
 let serverHits: number = 0;
 //const certs = {
 //  key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
@@ -37,8 +37,13 @@ serverHit.on('hit', (request: IncomingMessage) => {
   `host: ${request.headers.host}\turl: ${request.url}\n\tmethod: ${request.method}\n\tdate: ${time}\n`);
 });
 
-const parseRequest = (request: IncomingMessage, response: ServerResponse): void => {
-  console.log(request.headers);
+const parseRequest = (request: any, response: ServerResponse): void => {
+    console.log(request.url);
+  if (request.headers.host.includes('timer')) {
+    console.log('good');
+    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
+    response.end();
+  }
 //  console.log(`hit number: ${serverHits}, ${request.url} ${request.method}`);
   serverHits++;
 
@@ -75,19 +80,19 @@ const parseRequest = (request: IncomingMessage, response: ServerResponse): void 
 
     let filePath = 
       contentType === 'text/html' && request.url === '/'
-        ? path.join(__dirname, '..', '..', 'client', 'index.html')
-          : contentType === 'text/html' && request.url === '/index.html'
-            ? path.join(__dirname, '..', '..', 'client', 'index.html')
+        ? path.join(__dirname, '..', 'home.html')
+          : contentType === 'text/html' && request.url === '/home.html'
+            ? path.join(__dirname, '..', 'home.html')
               : contentType === 'text/css'
-                ? path.join(__dirname, '..', '..', 'client', 'src', 'css', path.basename(request.url))
-                  : path.join(__dirname, '..', '..', 'client', request.url);
+                ? path.join(__dirname, '..', path.basename(request.url))
+                  : path.join(__dirname, '..', request.url);
 
     // ensures spa won't try to reload to the current spot
     if (!extension && request.url?.slice(-1) !== '/') {
       filePath = path.join(__dirname, '..', '..', 'client', 'index.html');
     }
 
-//    console.log('check file path', filePath);
+    console.log('check file path', filePath);
 //    // check if file exists
     let fileExists = fs.existsSync(filePath);
 

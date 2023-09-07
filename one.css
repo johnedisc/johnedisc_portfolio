@@ -8,7 +8,8 @@ body {
 
 ul {
   width: auto;
-  margin: 0 0 0 20%;
+  margin: 0 0 0 25%;
+  padding: 0 0 0 0;
 }
 
 li.spacer {
@@ -33,6 +34,9 @@ section.popup {
   height: 80%;
   position: absolute;
   left: 55vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .modal-name {
@@ -46,3 +50,18 @@ section.popup {
 .links {
   color: var(--bg-1);
 }
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  section.popup {
+    padding: 0 0 0 calc(25% + .5rem);
+    width: 300px;
+    height: 80%;
+    position: absolute;
+    left: 0;
+  }
+
+  .modal {
+    opacity: 1;
+  }
+}
+
