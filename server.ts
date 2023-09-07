@@ -8,15 +8,15 @@ import { IncomingMessage, ServerResponse } from 'http';
 const serverHit = new EventEmitter();
 const PORT: number | string = process.env.PORT || 3300;
 let serverHits: number = 0;
-//const certs = {
-//  key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
-//  cert: fs.readFileSync('/etc/ssl/sslTime/originCert.pem'),
-//};
 const certs = {
-  key: fs.readFileSync('/etc/ssl/sslTime/timesup.test.key'),
-  cert: fs.readFileSync('/etc/ssl/sslTime/timesup.test.crt'),
-  passphrase: 'Priknedis'
+  key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
+  cert: fs.readFileSync('/etc/ssl/sslTime/originCert.pem'),
 };
+//const certs = {
+//  key: fs.readFileSync('/etc/ssl/sslTime/timesup.test.key'),
+//  cert: fs.readFileSync('/etc/ssl/sslTime/timesup.test.crt'),
+//  passphrase: 'Priknedis'
+//};
 
 const serveFile = async (filePath: string, contentType: string, httpsResponse: any): Promise<void> => {
   console.log('line 10', filePath, contentType);
