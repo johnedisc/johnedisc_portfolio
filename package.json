@@ -2,8 +2,18 @@
   "name": "johnedisc_portfolio",
   "version": "1.0.0",
   "description": "a brief description of johnedisc",
-  "main": "home.html",
+  "main": "server.js",
   "repository": "https://github.com/johnedisc/johnedisc_portfolio.git",
   "author": "johnedisc",
-  "license": "apache2"
+  "license": "apache2",
+  "scripts": {
+    "startDev": "nodemon ./dist/server.js",
+    "start": "node ./dist/server.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.6",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.0.2"
+  }
 }

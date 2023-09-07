@@ -1,0 +1,51 @@
+Arguments: 
+  /Users/johnedisc/.nvm/versions/node/v18.16.1/bin/node /opt/homebrew/bin/yarn install
+
+PATH: 
+  /opt/homebrew/opt/openjdk@11/bin:/Users/johnedisc/.nvm/versions/node/v18.16.1/bin:/Users/johnedisc/Library/Android/sdk/platform-tools:/Users/johnedisc/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/opt/openjdk@11/bin:/Users/johnedisc/.nvm/versions/node/v18.16.1/bin:/Users/johnedisc/Library/Android/sdk/platform-tools:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/johnedisc/Library/Android/sdk/emulator:/Users/johnedisc/Library/Android/sdk/tools:/Users/johnedisc/Library/Android/sdk/tools/bin:/Users/johnedisc/Library/Android/sdk/emulator:/Users/johnedisc/Library/Android/sdk/tools:/Users/johnedisc/Library/Android/sdk/tools/bin:/Users/johnedisc/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/johnedisc/code/johnedisc_portfolio/package.json: Unexpected token } in JSON at position 442
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "johnedisc_portfolio",
+    "version": "1.0.0",
+    "description": "a brief description of johnedisc",
+    "main": "server.js",
+    "repository": "https://github.com/johnedisc/johnedisc_portfolio.git",
+    "author": "johnedisc",
+    "license": "apache2",
+    "scripts": {
+      "startDev": "nodemon ./server.js",
+      "start": "node ./server.js",
+      "build:client": "tsc -p client/",
+      "build:server": "tsc -p server/",
+      "build": "tsc -p",
+    },
+    "devDependencies": {
+      "@types/node": "^20.5.6",
+      "nodemon": "^3.0.1",
+      "typescript": "^5.0.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
