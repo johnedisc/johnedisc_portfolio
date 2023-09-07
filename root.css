@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;1,200;1,300&display=swap');
 
 :root {
+  --primary-font: 'arial', sans-serif;
+
   --primary-font-color: #dfdcd9;
   --opposite-font-color: rgb(227,213,206);
-  --primary-font: 'arial', sans-serif;
   --link-font-color: rgb(106,59,231);
+
   --bg-1: rgb(32,35,38);
-  --light-blue: rgb(248,168,43);
-  --lavendar: rgb(115,131,218);
-  --bg-4: rgb(54,248,43);
-  --color1: rgb(252,195,221);
-  --color2: rgb(92,173,186);
-  --color3: rgb(248,247,44);
-  --color4: rgb(54,248,43);
+
+  --pink: rgb(252,195,221);
+  --orange: rgb(247,161,42);
+  --purple: rgb(115,130,217);
   --menu-color: rgb(155,174,206);
+  --light-green: rgb(129,161,147);
+
   --gutter: 1.7rem;
   --form-gutter: .8rem;
   --scale: 1.5;
@@ -142,5 +143,5 @@
     text-align: center;
     width: 100%;
     height: 100%;
-    opacity: .4;
+    opacity: .8;
   }

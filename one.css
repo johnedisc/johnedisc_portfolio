@@ -16,18 +16,15 @@ li.spacer {
 }
 
 a.name:hover {
-  color: var(--color1);
+  color: var(--pink);
 }
 
 a.job:hover {
-  color: var(--color2);
+  color: var(--orange);
 }
 
 p.links:hover {
   color: var(--primary-font-color);
-}
-
-.name {
 }
 
 section.popup {
@@ -38,9 +35,12 @@ section.popup {
   left: 55vw;
 }
 
-.modal {
+.modal-name {
   background-color: var(--menu-color);
-  opacity: .8;
+}
+
+.modal-software {
+  background-color: var(--light-green);
 }
 
 .links {
