@@ -24,6 +24,7 @@ const insertDescription = (selection) => {
 }
 
 const popup = (selection) => {
+  console.log(selection);
   let className;
   selection === 'name' ? className = 'modal-name'
     : className = 'modal-software';
@@ -31,21 +32,28 @@ const popup = (selection) => {
   const div = document.createElement('div');
   div.classList.add('modal', className);
   section.classList.add('popup', 'flex-down');
-  selection === 'name' ? section.innerHTML = `
+  if (selection === 'name') {
+  section.innerHTML = `
     <a href='https://github.com/johnedisc'><p class='links'>github</p></a>
     <a href='https://www.linkedin.com/in/johnedisc/'><p class='links'>linkedin</p></a>
     <a href='mailto:christopher.johnedis@gmail.com'><p class='links'>email</p></a>
-  `
-    : section.innerHTML = `
+  `;
+
+  } else if (selection === 'software') {
+    section.innerHTML = `
     <a id='nombolo'><p class='links'>nombolo</p></a>
     <a id='timer'><p class='links'>timer app</p></a>
-  `;
+    `;
+  }
 
   document.body.appendChild(div);
   document.body.appendChild(section);
 
-  document.querySelector('#nombolo').addEventListener('click', () => insertDescription('nombolo'));
-  document.querySelector('#timer').addEventListener('click', () => insertDescription('timer'));
+  if (selection === 'software') {
+    document.querySelector('#nombolo').addEventListener('click', () => insertDescription('nombolo'));
+    document.querySelector('#timer').addEventListener('click', () => insertDescription('timer'));
+  }
+
   div.addEventListener('click', paintList, { once: true });
 }
 
