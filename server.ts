@@ -1,9 +1,12 @@
 import * as https from 'https';
+import * as httpProxy from 'http-proxy';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import EventEmitter from 'events';
 import { IncomingMessage, ServerResponse } from 'http';
+
+let proxy: any = httpProxy.createProxyServer();
 
 const serverHit = new EventEmitter();
 const PORT: number | string = process.env.PORT || 3300;
@@ -41,6 +44,9 @@ const parseRequest = (request: any, response: ServerResponse): void => {
     console.log(request.url);
   if (request.headers.host.includes('timer')) {
     console.log('good');
+    proxy.web(request, response, {
+	    target: 'https://localhost:3500'
+    });
     response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
     response.end();
   }
