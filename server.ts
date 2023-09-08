@@ -47,8 +47,9 @@ const parseRequest = (request: any, response: ServerResponse): void => {
     proxy.web(request, response, {
 	    target: 'https://localhost:3500'
     });
-    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
-    response.end();
+//    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
+//    response.end();
+    return;
   }
 //  console.log(`hit number: ${serverHits}, ${request.url} ${request.method}`);
   serverHits++;
