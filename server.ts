@@ -6,7 +6,7 @@ import EventEmitter from 'events';
 import { IncomingMessage, ServerResponse } from 'http';
 const httpProxy = require('http-proxy');
 
-//let proxy = httpProxy.createServer();
+let proxy = httpProxy.createServer();
 
 const serverHit = new EventEmitter();
 const PORT: number | string = process.env.PORT || 3300;
@@ -45,21 +45,22 @@ const parseRequest = (request: any, response: ServerResponse): void => {
   if (request.headers.host.includes('timer')) {
     console.log('good');
 
-    httpProxy.createServer({
-      target: {
-        host: 'localhost',
-        port: 3500
-      },
-      ssl: {
-        key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
-        cert: fs.readFileSync('/etc/ssl/sslTime/originCert.pem')
-      }
-    }).listen(3300);
+//    httpProxy.createServer({
+//      target: {
+//        host: 'localhost',
+//        port: 3500
+//      },
+//      ssl: {
+//        key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
+//        cert: fs.readFileSync('/etc/ssl/sslTime/originCert.pem')
+//      }
+//    }).listen(3300);
 
-
-//    proxy.web(request, response, {
-//	    target: 'https://localhost:3500'
-//    });
+    setTimeout(function () {
+      proxy.web(req, res, {
+        target: 'http://localhost:3500'
+      });
+    }, 500);
 //    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
 //    response.end();
     return;
