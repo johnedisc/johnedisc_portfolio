@@ -1,12 +1,12 @@
 import * as https from 'https';
-import * as httpProxy from 'http-proxy';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import EventEmitter from 'events';
 import { IncomingMessage, ServerResponse } from 'http';
+const httpProxy = require('http-proxy');
 
-let proxy: any = httpProxy.createProxyServer();
+let proxy = httpProxy.createServer();
 
 const serverHit = new EventEmitter();
 const PORT: number | string = process.env.PORT || 3300;
