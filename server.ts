@@ -39,11 +39,11 @@ serverHit.on('hit', (request: IncomingMessage) => {
 
 const parseRequest = (request: any, response: ServerResponse): void => {
     console.log(request.url);
-  if (request.headers.host.includes('timer')) {
-    console.log('good');
-    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
-    response.end();
-  }
+//  if (request.headers.host.includes('timer')) {
+//    console.log('good');
+//    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
+//    response.end();
+//  }
 //  console.log(`hit number: ${serverHits}, ${request.url} ${request.method}`);
   serverHits++;
 
