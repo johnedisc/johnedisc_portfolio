@@ -1,4 +1,4 @@
-import * as https from 'https';
+import * as http from 'http';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
@@ -7,27 +7,26 @@ import { IncomingMessage, ServerResponse } from 'http';
 
 const serverHit = new EventEmitter();
 const PORT: number | string = process.env.PORT || 3300;
-let serverHits: number = 0;
-const certs = {
-  key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
-  cert: fs.readFileSync('/etc/ssl/sslTime/originCert.pem'),
-};
+//const certs = {
+//  key: fs.readFileSync('/etc/ssl/sslTime/privateKey.pem'),
+//  cert: fs.readFileSync('/etc/ssl/sslTime/originCert.pem'),
+//};
 //const certs = {
 //  key: fs.readFileSync('/etc/ssl/sslTime/timesup.test.key'),
 //  cert: fs.readFileSync('/etc/ssl/sslTime/timesup.test.crt'),
 //  passphrase: 'Priknedis'
 //};
 
-const serveFile = async (filePath: string, contentType: string, httpsResponse: any): Promise<void> => {
+const serveFile = async (filePath: string, contentType: string, httpResponse: any): Promise<void> => {
   console.log('line 10', filePath, contentType);
   try {
     const data = await fsPromises.readFile(filePath, 'utf8');
-    httpsResponse.writeHead(200, { 'Content-Type': contentType });
-    httpsResponse.end(data);
+    httpResponse.writeHead(200, { 'Content-Type': contentType });
+    httpResponse.end(data);
   } catch (error) {
     console.log(error);
-    httpsResponse.statusCode = 500;
-    httpsResponse.end();
+    httpResponse.statusCode = 500;
+    httpResponse.end();
   }
 }
 
@@ -41,11 +40,10 @@ const parseRequest = (request: any, response: ServerResponse): void => {
     console.log(request.url);
 //  if (request.headers.host.includes('timer')) {
 //    console.log('good');
-//    response.writeHead(301, { 'Location': 'https://chrisjohnedis.com:3500' });
+//    response.writeHead(301, { 'Location': 'http://chrisjohnedis.com:3500' });
 //    response.end();
 //  }
 //  console.log(`hit number: ${serverHits}, ${request.url} ${request.method}`);
-  serverHits++;
 
   serverHit.emit('hit', request);
 
@@ -125,5 +123,5 @@ const parseRequest = (request: any, response: ServerResponse): void => {
   }
 } 
 
-const server = https.createServer(certs, parseRequest);
+const server = http.createServer(parseRequest);
 server.listen(PORT, () => console.log(`server is running on ${PORT}`));
