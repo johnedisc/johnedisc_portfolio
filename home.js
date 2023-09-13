@@ -11,15 +11,30 @@ const relink = () => {
 }
 
 const insertDescription = (selection) => {
+  //see which project link was clicked
   selection === 'nombolo' ? argument = '#nombolo'
     : argument = '#timer';
+
+  //check to see if a previous project description is open
+  argument === '#nombolo' && document.querySelector('#timerDescription') ? document.querySelector('.popup').removeChild(document.querySelector('#timerDescription'))
+    : argument === '#timer' && document.querySelector('#nomboloDescription')
+      ? document.querySelector('.popup').removeChild(document.querySelector('#nomboloDescription')) : 
+
+  document.querySelector(argument).classList.toggle('clicked');
+
   const p = document.createElement('p');
-  selection === 'nombolo' ? p.innerHTML = `
-    <a href='https://www.nombolo.com/'><p class='links'>implemented company website with designs from the design team using figma to visualize the product. implemented with <b>react, aws-amplify, graphql, gitlab, and vim</b></p></a>
-  `
-    : p.innerHTML = `
-    <a href='https://timer.chrisjohnedis.com'><p class='links'>the timer app is an programmable interval timer which allows the user to create a series of custom tasks to be timed in sucession. the data is tracked and stored for later anaylsis. this project designed by my friend ethan demarest and implemented with <b>vanilla typescript, postgreSQL, a nodejs typescript server, on an ec2 instance</b></p></a>
-    `
+
+  if (selection === 'nombolo') { 
+    p.innerHTML = `
+      <a href='https://www.nombolo.com/'><p class='links'>implemented company website with designs from the design team using figma to visualize the product. implemented with <b>react, aws-amplify, graphql, gitlab, and vim</b></p></a>
+    `;
+    p.setAttribute('id','nomboloDescription');
+  } else {
+    p.innerHTML = `
+      <a href='https://timer.chrisjohnedis.com'><p class='links'>the timer app is an programmable interval timer which allows the user to create a series of custom tasks to be timed in sucession. the data is tracked and stored for later anaylsis. this project designed by my friend ethan demarest and implemented with <b>vanilla typescript, postgreSQL, a nodejs typescript server, on an ec2 instance</b></p></a>
+    `;
+    p.setAttribute('id','timerDescription');
+  }
   document.querySelector(argument).after(p);
 }
 
@@ -64,12 +79,12 @@ const paintList = () => {
   ul.classList.add('flex-down');
   ul.innerHTML = `
     <a class='name'>
-    <li class='h4 spacer name'>chris</li>
-    <li class='h4 spacer name'>johnedis</li>
+      <li class='h4 spacer'>chris</li>
+      <li class='h4 spacer'>johnedis</li>
     </a>
     <a class='job' id='software'>
-    <li class='h4 spacer'>software</li>
-    <li class='h4 spacer'>engineer</li>
+      <li class='h4 spacer'>software</li>
+      <li class='h4 spacer'>engineer</li>
     </a>
   `;
   // just in case i add this later
