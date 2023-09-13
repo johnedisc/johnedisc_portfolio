@@ -86,6 +86,7 @@ const popup = (selection) => {
 }
 
 const paintList = () => {
+	
   clearScreen();
   const ul = document.createElement('ul');
   const main = document.createElement('main');
