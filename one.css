@@ -88,8 +88,13 @@ section.popup {
   background-color: var(--light-green);
 }
 
+.modal-music {
+  background-color: var(--purple);
+}
+
 .modal-software,
-.modal-name {
+.modal-name,
+.modal-music {
   animation-name: home-page-show-work;
   animation-duration: 2s;
 }

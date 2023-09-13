@@ -42,22 +42,31 @@ const popup = (selection) => {
   console.log(selection);
   let className;
   selection === 'name' ? className = 'modal-name'
-    : className = 'modal-software';
+    : selection === 'software'
+      ? className = 'modal-software'
+        : className = 'modal-music';
+
   const section = document.createElement('section');
   const div = document.createElement('div');
   div.classList.add('modal', className);
   section.classList.add('popup');
   if (selection === 'name') {
-  section.innerHTML = `
-    <a href='https://github.com/johnedisc'><p class='links'>github</p></a>
-    <a href='https://www.linkedin.com/in/johnedisc/'><p class='links'>linkedin</p></a>
-    <a href='mailto:christopher.johnedis@gmail.com'><p class='links'>email</p></a>
-  `;
+    section.innerHTML = `
+      <a href='https://github.com/johnedisc' target='_blank'><p class='links'>github</p></a>
+      <a href='https://www.linkedin.com/in/johnedisc/' target='_blank'><p class='links'>linkedin</p></a>
+      <a href='mailto:christopher.johnedis@gmail.com' target='_blank'><p class='links'>email</p></a>
+    `;
 
   } else if (selection === 'software') {
     section.innerHTML = `
     <a id='nombolo'><p class='links'>nombolo</p></a>
     <a id='timer'><p class='links'>timer app</p></a>
+    `;
+  } else {
+    section.innerHTML = `
+      <a href='' target='_blank'><p class='links'>catherine feeny</p></a>
+      <a href='https://thecrenshaw.bandcamp.com/track/free-dumb' target='_blank'><p class='links music'>the crenshaw</p></a>
+      <a href='' target='_blank'><p class='links'>anna tivel</p></a>
     `;
   }
 
@@ -67,6 +76,11 @@ const popup = (selection) => {
   if (selection === 'software') {
     document.querySelector('#nombolo').addEventListener('click', () => insertDescription('nombolo'));
     document.querySelector('#timer').addEventListener('click', () => insertDescription('timer'));
+  } else if (selection === 'music') {
+    const bandlist = document.querySelectorAll('.music');
+    for (let i = 0; i < bandlist.length; i++) {
+      bandlist[i].addEventListener('click', () => insertDescription(event));
+    }
   }
 
   div.addEventListener('click', paintList, { once: true });
@@ -86,16 +100,16 @@ const paintList = () => {
       <li class='spacer'>software</li>
       <li class='spacer'>engineer.</li>
     </a>
-    <a class='music'>
-      <li class='spacer'>musician.</li>
-    </a>
   `;
-  // just in case i add this later
-  // <a class='job' id='music'><li class='h4 spacer'>drummer</li></a>
+//    <a id='music'>
+//      <li class='spacer'>musician.</li>
+//    </a>
+
   main.appendChild(ul);
   document.body.appendChild(main);
-  document.querySelector('.name').addEventListener('click', () => popup('name'))
-  document.querySelector('#software').addEventListener('click', () => popup('software'))
+  document.querySelector('.name').addEventListener('click', () => popup('name'));
+  document.querySelector('#software').addEventListener('click', () => popup('software'));
+  document.querySelector('#music').addEventListener('click', () => popup('music'));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
