@@ -39,7 +39,6 @@ const insertDescription = (selection) => {
 }
 
 const popup = (selection) => {
-  console.log(selection);
   let className;
   selection === 'name' ? className = 'modal-name'
     : selection === 'software'
@@ -109,10 +108,9 @@ const paintList = () => {
   document.body.appendChild(main);
   document.querySelector('.name').addEventListener('click', () => popup('name'));
   document.querySelector('#software').addEventListener('click', () => popup('software'));
-  document.querySelector('#music').addEventListener('click', () => popup('music'));
+//  document.querySelector('#music').addEventListener('click', () => popup('music'));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('hi');
   paintList();
 });
