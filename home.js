@@ -79,12 +79,15 @@ const paintList = () => {
   ul.classList.add('flex-down');
   ul.innerHTML = `
     <a class='name'>
-      <li class='h4 spacer'>chris</li>
-      <li class='h4 spacer'>johnedis</li>
+      <li class='spacer'>chris</li>
+      <li class='spacer'>johnedis.</li>
     </a>
     <a class='job' id='software'>
-      <li class='h4 spacer'>software</li>
-      <li class='h4 spacer'>engineer</li>
+      <li class='spacer'>software</li>
+      <li class='spacer'>engineer.</li>
+    </a>
+    <a class='music'>
+      <li class='spacer'>musician.</li>
     </a>
   `;
   // just in case i add this later
