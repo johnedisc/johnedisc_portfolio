@@ -104,6 +104,21 @@ p.insert {
   animation-duration: 2s;
 }
 
+#background-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  opacity: .1;
+}
+
+#background-text > * {
+  color: black;
+}
+
 @keyframes slide {
   0% {
     opacity: 1;
@@ -125,12 +140,21 @@ p.insert {
   }
 }
 
-@keyframes insert {
+@keyframes darkfade {
   0% {
     opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: .2;
+  }
+}
+
+@keyframes home-page-show-work {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .8;
   }
 }
 
@@ -159,6 +183,13 @@ p.insert {
 
   ul {
     margin: 0 9%;
+    animation-name: home-page-show-work;
+    animation-duration: 6s;
+  }
+
+  ul > * {
+    animation-name: home-page-show-work;
+    animation-duration: 6s;
   }
 
   li.spacer {
@@ -168,14 +199,35 @@ p.insert {
   @keyframes home-page-show-work {
     0% {
       opacity: 0;
+      color: black;
     }
     100% {
       opacity: 1;
+      color: var(--primary-font-color);
     }
   }
 
   .modal {
     opacity: 1;
+  }
+
+  #background-text {
+    left: 1rem;
+
+  }
+
+  @keyframes color {
+    0% {
+      color: var(--primary-font-color);
+    }
+    100% {
+      color: black;
+    }
+  }
+
+  #background-text > * {
+    font-size: var(--h3);
+    animation: color 4s ;
   }
 }
 

@@ -53,7 +53,7 @@ const popup = (selection) => {
     section.innerHTML = `
       <a href='https://github.com/johnedisc' target='_blank'><p class='links'>github</p></a>
       <a href='https://www.linkedin.com/in/johnedisc/' target='_blank'><p class='links'>linkedin</p></a>
-      <a href='mailto:christopher.johnedis@gmail.com' target='_blank'><p class='links'>email</p></a>
+      <a href='mailto:chris@mail.chrisjohnedis.com' target='_blank'><p class='links'>email</p></a>
     `;
 
   } else if (selection === 'software') {
@@ -97,8 +97,8 @@ const paintList = () => {
       <li class='spacer'>johnedis.</li>
     </a>
     <a class='job' id='software'>
-      <li class='spacer'>software</li>
-      <li class='spacer'>engineer.</li>
+      <li class='spacer'>web</li>
+      <li class='spacer'>developer.</li>
     </a>
   `;
 //    <a id='music'>
@@ -110,7 +110,23 @@ const paintList = () => {
   document.querySelector('.name').addEventListener('click', () => popup('name'));
   document.querySelector('#software').addEventListener('click', () => popup('software'));
 //  document.querySelector('#music').addEventListener('click', () => popup('music'));
+
+  backgroundText(main);
 };
+
+function backgroundText(parentElement) {
+  const div = document.createElement('div');
+  div.setAttribute('id', 'background-text');
+  div.innerHTML = `
+    <h1>javascript</h1>
+    <h1>react</h1>
+    <h1>css</h1>
+    <h1>html</h1>
+    <h1>postgreSQL</h1>
+    <h1>nodejs</h1>
+  `;
+  parentElement.appendChild(div);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   paintList();
