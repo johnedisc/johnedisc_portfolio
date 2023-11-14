@@ -13,13 +13,18 @@ export const addLinkListener = (parent) => {
   }
 }
 
+const backBtn = ` <a href='/'><p class='back' style='color: var(--primary-font-color)'>back.</p></a> `;
+
 const clearScreen = () => {
   while (document.body.children.length > 0) {
     document.body.removeChild(document.body.children[0]);
   };
 }
 
-const insertDescription = (selection) => {
+export const insertDescription = (selection) => {
+  console.log(selection);
+  let argument;
+  if ((selection === 'nombolo' && document.querySelector('#nomboloDescription')) || (selection === 'timer' && document.querySelector('#timerDescription'))) return 0;
   //see which project link was clicked
   selection === 'nombolo' ? argument = '#nombolo'
     : argument = '#timer';
@@ -63,12 +68,14 @@ export const popup = (selection) => {
       <a href='https://github.com/johnedisc' target='_blank'><p class='links'>github</p></a>
       <a href='https://www.linkedin.com/in/johnedisc/' target='_blank'><p class='links'>linkedin</p></a>
       <a href='mailto:chris@mail.chrisjohnedis.com' target='_blank'><p class='links'>email</p></a>
+      ${backBtn}
     `;
 
   } else if (selection === 'software') {
     section.innerHTML = `
-    <a id='nombolo'><p class='links'>nombolo</p></a>
-    <a id='timer'><p class='links'>timer app</p></a>
+    <a href='/nombolo' id='nombolo'><p class='links'>nombolo</p></a>
+    <a href='/timer' id='timer'><p class='links'>timer app</p></a>
+      ${backBtn}
     `;
   } else {
     section.innerHTML = `
@@ -80,23 +87,23 @@ export const popup = (selection) => {
       <a target='_blank'><p class='list-header'>percussion.</p></a>
       <a href='https://toddmarston.bandcamp.com/album/solidarity-themes' target='_blank'><p class='links'>todd marston</p></a>
       <a href='https://corinnesharlet.bandcamp.com/album/a-lovely-future' target='_blank'><p class='links'>corinne sharlet</p></a>
-
-
+      ${backBtn}
     `;
   }
+  addLinkListener(section);
 
   document.body.appendChild(div);
   document.body.appendChild(section);
 
-  if (selection === 'software') {
-    document.querySelector('#nombolo').addEventListener('click', () => insertDescription('nombolo'));
-    document.querySelector('#timer').addEventListener('click', () => insertDescription('timer'));
-  } else if (selection === 'music') {
-    const bandlist = document.querySelectorAll('.music');
-    for (let i = 0; i < bandlist.length; i++) {
-      bandlist[i].addEventListener('click', () => insertDescription(event));
-    }
-  }
+//  if (selection === 'software') {
+//    document.querySelector('#nombolo').addEventListener('click', () => insertDescription('nombolo'));
+//    document.querySelector('#timer').addEventListener('click', () => insertDescription('timer'));
+//  } else if (selection === 'music') {
+//    const bandlist = document.querySelectorAll('.music');
+//    for (let i = 0; i < bandlist.length; i++) {
+//      bandlist[i].addEventListener('click', () => insertDescription(event));
+//    }
+//  }
 
   div.addEventListener('click', paintList, { once: true });
 }

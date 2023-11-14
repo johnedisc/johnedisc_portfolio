@@ -1,11 +1,10 @@
-import { paintList, popup } from "./home.js";
+import { paintList, popup, insertDescription } from "./home.js";
 
 export const Router = {
   init: () => {
 
     // event handler for changes popstate
     window.addEventListener('popstate', (event) => {
-      console.log(event.state.path);
       Router.go(event.state.path, false);
     });
 
@@ -17,7 +16,6 @@ export const Router = {
   go: (path, addToHistory=true) => {
 
 
-    console.log(path);
     if (addToHistory) {
       history.pushState({ path }, '', path)
     }
@@ -46,6 +44,12 @@ export const Router = {
         break;
       case "/music":
         popup('music');
+        break;
+      case "/nombolo":
+        insertDescription('nombolo');
+        break;
+      case "/timer":
+        insertDescription('timer');
         break;
       default:
         break;

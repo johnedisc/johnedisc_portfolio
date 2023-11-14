@@ -40,7 +40,8 @@ p.list-header {
 }
 
 p.links:hover,
-p.list-header {
+p.list-header,
+p.back {
   color: var(--primary-font-color);
   transition-property: color, opacity;
   transition-duration: .4s; 
@@ -171,15 +172,6 @@ p.insert {
   }
 }
 
-@keyframes home-page-show-work {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: .8;
-  }
-}
-
 .modal {
   opacity: .8;
 }
@@ -197,27 +189,33 @@ p.insert {
   ul {
     margin: 0 9%;
     animation-name: home-page-show-work;
-    animation-duration: 6s;
+    animation-duration: 1s;
   }
 
   ul > * {
+    opacity: .8;
     animation-name: home-page-show-work;
-    animation-duration: 6s;
+    animation-duration: 1s;
   }
 
   li.spacer {
     font-size: var(--h4);
   }
 
-  @keyframes home-page-show-work {
+  @keyframes show-work-mobile {
     0% {
       opacity: 0;
-      color: black;
     }
     100% {
-      opacity: .8;
-      color: var(--primary-font-color);
+      opacity: 1;
     }
+  }
+
+  .modal-software,
+  .modal-name,
+  .modal-music {
+    animation-name: show-work-mobile;
+    animation-duration: 1s;
   }
 
   .modal {
@@ -225,8 +223,8 @@ p.insert {
   }
 
   #background-text {
+    display: none;
     left: 1rem;
-
   }
 
   @keyframes color {
