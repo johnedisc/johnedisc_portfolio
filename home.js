@@ -1,13 +1,22 @@
+import { Router } from "./router.js";
+
+export const addLinkListener = (parent) => {
+  const links = parent.querySelectorAll('a');
+  if (links) {
+    for (let i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = links[i].getAttribute('href');
+        Router.go(url);
+      });
+    };
+  }
+}
+
 const clearScreen = () => {
   while (document.body.children.length > 0) {
     document.body.removeChild(document.body.children[0]);
   };
-}
-
-const relink = () => {
-  const links = document.querySelectorAll('a');
-  for (let i = 0; i < links.length; i++) {
-  }
 }
 
 const insertDescription = (selection) => {
@@ -38,7 +47,7 @@ const insertDescription = (selection) => {
   document.querySelector(argument).after(p);
 }
 
-const popup = (selection) => {
+export const popup = (selection) => {
   let className;
   selection === 'name' ? className = 'modal-name'
     : selection === 'software'
@@ -63,9 +72,16 @@ const popup = (selection) => {
     `;
   } else {
     section.innerHTML = `
-      <a href='' target='_blank'><p class='links'>catherine feeny</p></a>
+      <a target='_blank'><p class='list-header'>drums.</p></a>
+      <a href='https://music.apple.com/us/album/catherine-feeny-and-chris-johnedis/976424080' target='_blank'><p class='links'>catherine feeny</p></a>
       <a href='https://thecrenshaw.bandcamp.com/track/free-dumb' target='_blank'><p class='links music'>the crenshaw</p></a>
-      <a href='' target='_blank'><p class='links'>anna tivel</p></a>
+      <a href='https://annativel.bandcamp.com/album/small-believer' target='_blank'><p class='links'>anna tivel</p></a>
+      <a href='https://music.apple.com/gb/album/diamond-in-a-rock/668538316' target='_blank'><p class='links'>tunde baiyewu</p></a>
+      <a target='_blank'><p class='list-header'>percussion.</p></a>
+      <a href='https://toddmarston.bandcamp.com/album/solidarity-themes' target='_blank'><p class='links'>todd marston</p></a>
+      <a href='https://corinnesharlet.bandcamp.com/album/a-lovely-future' target='_blank'><p class='links'>corinne sharlet</p></a>
+
+
     `;
   }
 
@@ -85,30 +101,31 @@ const popup = (selection) => {
   div.addEventListener('click', paintList, { once: true });
 }
 
-const paintList = () => {
+export const paintList = () => {
 	
   clearScreen();
   const ul = document.createElement('ul');
   const main = document.createElement('main');
   ul.classList.add('flex-down');
   ul.innerHTML = `
-    <a class='name'>
+    <a href='/about' class='name'>
       <li class='spacer'>chris</li>
       <li class='spacer'>johnedis.</li>
     </a>
-    <a class='job' id='software'>
+    <a href='/development' class='job' id='software'>
       <li class='spacer'>web</li>
       <li class='spacer'>developer.</li>
     </a>
+    <a href='/music' class='music' id='music'>
+      <li class='spacer'>musician.</li>
+    </a>
   `;
-//    <a id='music'>
-//      <li class='spacer'>musician.</li>
-//    </a>
+  addLinkListener(ul);
 
   main.appendChild(ul);
   document.body.appendChild(main);
-  document.querySelector('.name').addEventListener('click', () => popup('name'));
-  document.querySelector('#software').addEventListener('click', () => popup('software'));
+//  document.querySelector('.name').addEventListener('click', () => popup('name'));
+//  document.querySelector('#software').addEventListener('click', () => popup('software'));
 //  document.querySelector('#music').addEventListener('click', () => popup('music'));
 
   backgroundText(main);
@@ -129,5 +146,5 @@ function backgroundText(parentElement) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  paintList();
+  Router.init();
 });

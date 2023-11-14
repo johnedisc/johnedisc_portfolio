@@ -23,7 +23,7 @@ li.spacer {
   font-size: var(--h3);
 }
 
-a.name, a.job {
+a.name, a.job, a.music {
   color: var(--primary-font-color);
   position: relative;
   transition-property: color;
@@ -35,7 +35,12 @@ p.links {
   color: var(--bg-1);
 }
 
-p.links:hover {
+p.list-header {
+  color: var(--bg-1);
+}
+
+p.links:hover,
+p.list-header {
   color: var(--primary-font-color);
   transition-property: color, opacity;
   transition-duration: .4s; 
@@ -58,8 +63,13 @@ a.job:hover {
   color: var(--orange);
 }
 
+a.music:hover {
+  color: var(--purple);
+}
+
 a.job:hover, 
-a.name:hover {
+a.name:hover,
+a.music: hover {
   transition-property: color;
   transition-duration: 1s; 
   transition-timing-function: ease;
