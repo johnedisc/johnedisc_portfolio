@@ -5,8 +5,11 @@ export const addLinkListener = (parent) => {
   if (links) {
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener('click', (event) => {
-        event.preventDefault();
         const url = links[i].getAttribute('href');
+        if (url.includes('http')) {
+          return 0;
+        }
+        event.preventDefault();
         Router.go(url);
       });
     };
