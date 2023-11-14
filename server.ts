@@ -85,9 +85,11 @@ const parseRequest = (request: any, response: ServerResponse): void => {
                 ? path.join(__dirname, '..', path.basename(request.url))
                   : path.join(__dirname, '..', request.url);
 
+      console.log('88', filePath);
     // ensures spa won't try to reload to the current spot
     if (!extension && request.url?.slice(-1) !== '/') {
-      filePath = path.join(__dirname, '..', '..', 'client', 'index.html');
+      filePath = path.join(__dirname, '..', '/home.html');
+      console.log('92', filePath);
     }
 
     console.log('check file path', filePath);
