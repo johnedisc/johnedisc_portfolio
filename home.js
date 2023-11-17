@@ -71,6 +71,8 @@ export const popup = (selection) => {
       <a href='https://github.com/johnedisc' target='_blank'><p class='links'>github</p></a>
       <a href='https://www.linkedin.com/in/johnedisc/' target='_blank'><p class='links'>linkedin</p></a>
       <a href='mailto:chris@mail.chrisjohnedis.com' target='_blank'><p class='links'>email</p></a>
+      <a href='https://docs.google.com/document/d/e/2PACX-1vReinLxM7HH2EhRJ9ATq_Kdl8zd8j0-zgjbH76EhjFOq93xvaVrXXuhY7mDUxVDuQ/pub' target='_blank'><p class='links'>resume</p></a>
+
       ${backBtn}
     `;
 
@@ -140,6 +142,7 @@ export const paintList = () => {
 
   backgroundText(main);
 };
+
 
 function backgroundText(parentElement) {
   const div = document.createElement('div');
